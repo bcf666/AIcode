@@ -86,12 +86,15 @@ graph TD
 - 动画使用 CSS 动画 + 少量 JS 控制
 - 无需框架，保持简单
 
-### 5.2 后端（模拟演示）
-- 由于真实 APK 生成需要 Android SDK 和编译环境
-- 本演示版本将：
-  - 展示完整的 UI 和交互流程
-  - 模拟 API 调用和编译过程
-  - 提供示例 APK 下载（预编译的演示应用）
+### 5.2 后端
+- Node.js + Express.js
+- 调用 OpenAI/Claude API 生成 Android 代码
+- 使用 Gradle 编译生成真实 APK
 
-### 5.3 路由定义
+### 5.3 API 接口
+- POST `/api/generate` - 提交生成任务
+- GET `/api/status/:jobId` - 查询任务状态
+- GET `/api/download/:jobId` - 下载 APK
+
+### 5.4 路由定义
 - `/` - 主页面（生成器界面）
