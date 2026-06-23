@@ -12,8 +12,10 @@ interface JobStatus {
 }
 
 const API_PROVIDERS = [
-  { value: 'openai', label: 'OpenAI (GPT-4)' },
-  { value: 'claude', label: 'Claude (Anthropic)' },
+  { value: 'openai', label: 'OpenAI' },
+  { value: 'claude', label: 'Claude' },
+  { value: 'gemini', label: 'Gemini' },
+  { value: 'deepseek', label: 'DeepSeek' },
 ];
 
 export default function Home() {
@@ -172,17 +174,32 @@ export default function Home() {
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-slate-400 mb-2">AI 提供商</label>
-                <select
+                <label className="block text-sm text-slate-400 mb-2">API 供应商</label>
+                <input
+                  type="text"
                   value={apiProvider}
                   onChange={(e) => setApiProvider(e.target.value)}
+                  placeholder="如：openai, claude, gemini..."
                   disabled={isGenerating}
-                  className="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-all disabled:opacity-50"
-                >
+                  className="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-all disabled:opacity-50 mb-2"
+                />
+                <div className="flex flex-wrap gap-2">
                   {API_PROVIDERS.map((p) => (
-                    <option key={p.value} value={p.value}>{p.label}</option>
+                    <button
+                      key={p.value}
+                      type="button"
+                      onClick={() => setApiProvider(p.value)}
+                      disabled={isGenerating}
+                      className={`px-3 py-1 text-xs rounded-full transition-all ${
+                        apiProvider === p.value
+                          ? 'bg-purple-600 text-white'
+                          : 'bg-slate-700/50 text-slate-400 hover:bg-slate-600/50'
+                      }`}
+                    >
+                      {p.label}
+                    </button>
                   ))}
-                </select>
+                </div>
               </div>
               <div>
                 <label className="block text-sm text-slate-400 mb-2">API Key</label>
