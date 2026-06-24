@@ -12,15 +12,16 @@ interface JobStatus {
 }
 
 const API_PROVIDERS = [
-  { value: 'openai', label: 'OpenAI' },
-  { value: 'claude', label: 'Claude' },
-  { value: 'gemini', label: 'Gemini' },
-  { value: 'deepseek', label: 'DeepSeek' },
+  { value: 'https://api.openai.com/v1', label: 'OpenAI' },
+  { value: 'https://api.anthropic.com/v1', label: 'Claude' },
+  { value: 'https://generativelanguage.googleapis.com/v1beta', label: 'Gemini' },
+  { value: 'https://api.deepseek.com/v1', label: 'DeepSeek' },
+  { value: 'https://dashscope.aliyuncs.com/compatible-mode/v1', label: '通义千问' },
 ];
 
 export default function Home() {
   const [apiKey, setApiKey] = useState('');
-  const [apiProvider, setApiProvider] = useState('openai');
+  const [apiProvider, setApiProvider] = useState('https://api.openai.com/v1');
   const [appName, setAppName] = useState('');
   const [packageName, setPackageName] = useState('');
   const [requirements, setRequirements] = useState('');
@@ -174,12 +175,12 @@ export default function Home() {
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-slate-400 mb-2">API 供应商</label>
+                <label className="block text-sm text-slate-400 mb-2">API 地址 (Base URL)</label>
                 <input
                   type="text"
                   value={apiProvider}
                   onChange={(e) => setApiProvider(e.target.value)}
-                  placeholder="如：openai, claude, gemini..."
+                  placeholder="https://api.openai.com/v1"
                   disabled={isGenerating}
                   className="w-full bg-slate-800/50 border border-slate-600/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-all disabled:opacity-50 mb-2"
                 />

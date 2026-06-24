@@ -16,7 +16,7 @@ const jobs = new Map<string, {
   packageName: string;
   requirements: string;
   apiKey: string;
-  apiProvider: string;
+  apiBaseUrl: string;
   downloadUrl: string | null;
   error: string | null;
   createdAt: Date;
@@ -53,7 +53,7 @@ router.post('/generate', async (req: Request, res: Response) => {
       packageName: packageName || `com.example.${appName.toLowerCase().replace(/\s+/g, '')}`,
       requirements,
       apiKey,
-      apiProvider: apiProvider || 'openai',
+      apiBaseUrl: apiProvider || 'https://api.openai.com/v1',
       downloadUrl: null,
       error: null,
       createdAt: new Date(),
