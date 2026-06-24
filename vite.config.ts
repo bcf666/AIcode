@@ -24,6 +24,18 @@ export default defineConfig({
     }), 
     tsconfigPaths(),
   ],
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          ui: ['lucide-react', 'clsx', 'tailwind-merge'],
+        }
+      }
+    }
+  },
   server: {
     proxy: {
       '/api': {

@@ -1,0 +1,12 @@
+name = "alcode-apk-generator"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+pages_build_output_dir = "dist"
+
+[vars]
+ENVIRONMENT = "production"
+
+[env.preview]
+name = "alcode-apk-generator-preview"
+vars = { ENVIRONMENT = "preview" }

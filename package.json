@@ -10,7 +10,12 @@
     "preview": "vite preview",
     "check": "tsc --noEmit",
     "server:dev": "nodemon",
-    "dev": "concurrently \"npm run client:dev\" \"npm run server:dev\""
+    "dev": "concurrently \"npm run client:dev\" \"npm run server:dev\"",
+    "pages:build": "vite build",
+    "pages:dev": "wrangler pages dev -- vite",
+    "pages:deploy": "npm run pages:build && wrangler pages deploy",
+    "deploy": "npm run pages:deploy",
+    "cf:typegen": "wrangler types"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.105.0",
@@ -52,6 +57,7 @@
     "typescript-eslint": "^8.30.1",
     "vite": "^6.3.5",
     "vite-plugin-trae-solo-badge": "^1.0.0",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "wrangler": "^3.114.17"
   }
 }
